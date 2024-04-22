@@ -44,3 +44,9 @@ npm run build
 ```sh
 npm run lint
 ```
+
+### Compile and Minify for Production
+
+```sh
+npm run build-only
+```
