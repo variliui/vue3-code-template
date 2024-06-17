@@ -7,7 +7,6 @@ import { urlPrefix } from '../ApiConfig';
  */
 // const urlPrefix = '/mock/resource/compare/'
 // const urlPrefix = '/resource/compare/'
-// const devPrefix = getViteEnv(import.meta.env.MODE, 'VITE_API_PREFIX')
 
 /**
  * 结构树页面top选择型号列表接口
