@@ -9,22 +9,8 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Unocss from 'unocss/vite'
 //引入
 import viteCompression from 'vite-plugin-compression'
-import Icons from 'unplugin-icons/vite'
-import { FileSystemIconLoader } from 'unplugin-icons/loaders'
-import IconsResolver from 'unplugin-icons/resolver'
 import { createHtmlPlugin } from 'vite-plugin-html';
 import ElementPlus from 'unplugin-element-plus/vite'
-
-// 图标集合请前往 https://icones.netlify.app/
-// 使用方式：
-// 选中需要的图标，在 Components 标签集合中 点击 VUE TS 即可将图标的vue文件内容复制,
-// 然后在/src/assets/icons/ 目录下创建vue文件，将复制的内容粘贴进去。即可当作icon使用。
-// 例子: import EpInfoFilled from '~icons/ep/info-filled'
-// 然后按照icon变量进行bind即可在模板标签中使用
-// -----------以下内容ts报错但是可以用------------------
-// 选中需要的图标，在 Components 标签集合中 点击 Unplugin Icons 即可将图标引入
-// 例子: import EpInfoFilled from '~icons/ep/info-filled'
-// 然后按照icon变量进行bind即可在模板标签中使用
 
 const pathSrc = path.resolve(__dirname, 'src');
 const getViteEnv = (mode: string, target: string) => {
@@ -36,7 +22,6 @@ export default defineConfig(({ command, mode }: ConfigEnv):UserConfig => {
   const commonConfig = {
     resolve: {
       alias: {
-        '~/': `${pathSrc}/`,
         '@/': `${pathSrc}/`
       }
     },
@@ -68,14 +53,6 @@ export default defineConfig(({ command, mode }: ConfigEnv):UserConfig => {
           ElementPlusResolver({
             importStyle: 'sass'
           }),
-          IconsResolver({
-            prefix: 'icon', // 自动引入的Icon组件统一前缀，默认为 i，设置false为不需要前缀
-            // {prefix}-{collection}-{icon} 使用组件解析器时，您必须遵循名称转换才能正确推断图标。
-            // alias: { park: 'icon-park' } 集合的别名
-            // this is optional, default enabling all the collections supported by Iconify
-            enabledCollections: ['ep', 'pixelarticons'], // iconify的集合名称
-            customCollections: ['my']
-          })
         ],
         dts: 'src/components.d.ts'
       }),
@@ -93,18 +70,6 @@ export default defineConfig(({ command, mode }: ConfigEnv):UserConfig => {
         algorithm: 'gzip',
         ext: '.gz'
       }),
-
-      Icons({
-        autoInstall: true,
-        scale: 1.2, // Scale of icons against 1em
-        defaultStyle: '', // Style apply to icons
-        defaultClass: '', // Class names apply to icons
-        compiler: 'vue3',
-        customCollections: {
-          my: FileSystemIconLoader('src/assets/icons') //配置自定义集合的路径, 更详细的配置可参考插件仓库
-        }
-      }),
-
       createHtmlPlugin({
 				inject: {
 					data: {
@@ -121,7 +86,7 @@ export default defineConfig(({ command, mode }: ConfigEnv):UserConfig => {
       }),
     ],
     build: {
-      target: 'es2015',
+      target: 'esnext',
       minify: 'esbuild',
       outDir: 'dist',
       assetsDir: 'assets', //指定静态资源存放路径
@@ -147,10 +112,10 @@ export default defineConfig(({ command, mode }: ConfigEnv):UserConfig => {
       drop: ['console', 'debugger'],
     },
   }
-  let result = {}
+  let finalConfig = {}
   if (!isBuild) {
     // dev 独有配置
-    result = {
+    finalConfig = {
       ...commonConfig,
       server: {
         open: true,
@@ -173,10 +138,10 @@ export default defineConfig(({ command, mode }: ConfigEnv):UserConfig => {
     }
   } else {
     // prod 独有配置
-    result = {
+    finalConfig = {
       ...commonConfig,
       base: './'
     }
   }
-  return result
+  return finalConfig
 })

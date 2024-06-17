@@ -1,7 +1,8 @@
 {
-  "name": "数字主线",
+  "name": "template",
   "version": "1.0.0",
   "private": true,
+  "author": "varil",
   "scripts": {
     "dev": "vite --host",
     "build": "run-p type-check \"build-only {@}\" --",

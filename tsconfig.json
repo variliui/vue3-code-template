@@ -74,7 +74,6 @@
     "moduleResolution": "node",
     "types": ["node", "element-plus/global", "vite/client"],
     "paths": {
-      "~/*": ["src/*"],
       "@/*": ["src/*"]
     },
     "resolveJsonModule": true,

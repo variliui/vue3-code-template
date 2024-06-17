@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
-import { getToken } from '~/utils/auth'
-import { logToWindow } from '~/utils/util'
+import { getToken } from '@/utils/auth'
+import { logToWindow } from '@/utils/util'
 // axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
 // create an axios instance
 const service: AxiosInstance = axios.create({

@@ -14,11 +14,11 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { useLayoutStore } from '~/stores/layoutStore';
+import { useLayoutStore } from '@/stores/layoutStore';
 import { storeToRefs } from 'pinia';
-import { sliceName } from '~/utils/util';
+import { sliceName } from '@/utils/util';
 import { Icon } from '@iconify/vue';
-import { mainBodyWidth } from '~/components/PublicHelper';
+import { mainBodyWidth } from '@/components/PublicHelper';
 
 const router = useRouter();
 const routes = router.getRoutes();

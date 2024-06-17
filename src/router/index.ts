@@ -12,7 +12,7 @@ const router = createRouter({
     },
     {
       path: '/homePage',
-      component: () => import('~/views/HomePage/HomePage.vue'),
+      component: () => import('@/views/HomePage/HomePage.vue'),
       name: '首页',
       meta: {
         icon: 'ant-design:home-outlined',

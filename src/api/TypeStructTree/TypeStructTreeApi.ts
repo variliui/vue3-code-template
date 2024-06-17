@@ -1,4 +1,4 @@
-import request from '~/utils/request'
+import request from '@/utils/request'
 import { IResponse } from '../PublicHelper'
 import { urlPrefix } from '../ApiConfig';
 

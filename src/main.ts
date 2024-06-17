@@ -1,5 +1,3 @@
-import './styles/index.scss'
-
 import { createApp } from 'vue'
 //@ts-ignore
 import { createPinia } from 'pinia'
@@ -28,7 +26,6 @@ pinia.use(
     auto: true
   })
 )
-
 app.use(pinia)
 app.use(router)
 app.mount('#app')

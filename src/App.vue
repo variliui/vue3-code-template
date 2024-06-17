@@ -1,5 +1,5 @@
 <template>
-  <el-config-provider namespace="ep">
+  <el-config-provider>
     <div class="main-container">
       <!-- <base-header class="header"></base-header> -->
       <div class="body">
@@ -13,10 +13,10 @@
 
 <script setup lang="ts">
 import { onMounted, onUnmounted } from 'vue';
-import { useLayoutStore } from '~/stores/layoutStore';
-import { toggleDark, isDark } from "~/composables";
+import { useLayoutStore } from '@/stores/layoutStore';
+import { toggleDark, isDark } from "@/composables";
 
-const store = useLayoutStore();
+const layoutStore = useLayoutStore();
 
 const minWindowWidth = 1600;
 // 确保解构确保后的state具有响应式，要使用storeToRefs方法
@@ -31,7 +31,7 @@ onMounted(() => {
 
 const handleResize = () => {
   const isCollapse = document.body.clientWidth < minWindowWidth;
-  store.changeCollapse(isCollapse);
+  layoutStore.changeCollapse(isCollapse);
 };
 
 onUnmounted(() => {
@@ -51,10 +51,6 @@ const addHotKeys = () => {
       return;
     }
     const key = e.key.toLowerCase();
-    if (key === 'm') {
-      // idConnections
-      // handleLocalStorage(LocalStorageMethods.remove, LocalStorageKeys.idConnections);
-    }
   };
 
   document.onkeyup = function (e) {
@@ -62,21 +58,37 @@ const addHotKeys = () => {
     if (keyMap.indexOf(key) > -1) {
       switch (key) {
         case ' ':
-          // toggleDark();
+          toggleDark();
           break;
       }
     }
   };
-  const demo = document.getElementById('app');
-  if (demo) {
-    demo.oncontextmenu = function (e) {
-      e.preventDefault();
-      // 执行代码块
-    };
-  }
 };
 </script>
 
 <style>
-@import "@/styles/container/index.scss";
+.main-container {
+  max-width: 100vw !important;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  width: 100%;
+  height: 8rem;
+}
+
+.body {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.sidebar {
+  min-width: 4rem;
+  height: 100%;
+}
+
 </style>
