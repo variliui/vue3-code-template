@@ -1,4 +1,4 @@
-import { isEmptyVal } from './is'
+import { isEmpty } from 'lodash-es'
 
 let performenceTime = performance.now()
 
@@ -49,7 +49,7 @@ interface ISliceData {
  * @returns 字符串为空时返回无，长度超出10时用...来隐藏
  */
 export const sliceName = (data: string): ISliceData => {
-  if (isEmptyVal(data)) {
+  if (isEmpty(data)) {
     return { rawName: data, displayName: '无' }
   } else if (data.length > strMaxLength) {
     return { rawName: data, displayName: data.slice(0, strMaxLength) + '...' }

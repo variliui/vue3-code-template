@@ -4,7 +4,6 @@
       :class="getCollapsed ? '' : `w-13rem!`">
       <el-menu-item v-for="(route) in routes" v-show="route.meta.isShow" :key="route.name"
         :index="route.path">
-        <Icon class="mr-1rem min-w-1.5rem min-h-1.5rem" :icon="(route.meta.icon as string)" />
         <template #title> {{ sliceName(route.meta.title as string).displayName }}</template>
       </el-menu-item>
     </el-menu>
@@ -17,8 +16,6 @@ import { useRouter } from 'vue-router';
 import { useLayoutStore } from '@/stores/layoutStore';
 import { storeToRefs } from 'pinia';
 import { sliceName } from '@/utils/util';
-import { Icon } from '@iconify/vue';
-import { mainBodyWidth } from '@/components/PublicHelper';
 
 const router = useRouter();
 const routes = router.getRoutes();

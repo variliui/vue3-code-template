@@ -1,10 +1,10 @@
 <template>
   <el-config-provider>
     <div class="main-container">
-      <!-- <base-header class="header"></base-header> -->
+      <base-header class="header"></base-header>
       <div class="body">
-        <base-side class="sidebar"></base-side>
-        <base-main class="w-100%! h-100%!"></base-main>
+        <!-- <base-side class="sidebar"></base-side> -->
+        <base-main class="w-full! h-full!"></base-main>
       </div>
     </div>
   </el-config-provider>

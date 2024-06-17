@@ -36,11 +36,6 @@ export interface ISelectOptionModel {
   label: string
 }
 
-/**
- * 主体内容宽度
- */
-export const mainBodyWidth = '16rem'
-
 export type refItem = Element | ComponentPublicInstance | null
 
 export enum ELMessageList {
@@ -54,15 +49,4 @@ export enum ELMessageList {
   ChooseDeleteNode = '请先选择要删除的节点',
   EditPreviousNode = '请先编辑上一个节点',
   GetClassListFail = '获取选项失败'
-}
-
-/**
- * 当前所有系统的枚举
- */
-export enum EBaseSystemType {
-  IDS = 'IDS',
-  EDS = 'EDS',
-  SysML = 'SysML',
-  SysLink = 'SysLink',
-  Base = 'Base'
 }

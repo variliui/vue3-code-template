@@ -1,9 +1,7 @@
 <template>
-  <div class="header">
+  <div>
   </div>
 </template>
 <script setup lang="ts"></script>
 <style lang="scss" scoped>
-.header {
-}
 </style>

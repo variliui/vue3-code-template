@@ -45,7 +45,7 @@ export default defineConfig(({ command, mode }: ConfigEnv):UserConfig => {
       }),
       Components({
         // allow auto load markdown components under `./src/components/`
-        dirs: [`./src/components/`, './src/views/', './assets/icons/'],
+        dirs: [`./src/components/`, './src/views/', './assets/icons/', './src/layout/'],
         extensions: ['vue', 'md'],
         // allow auto import and register components used in markdown
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
