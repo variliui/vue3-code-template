@@ -13,16 +13,13 @@ dist
 dist-ssr
 coverage
 *.local
-
-/cypress/videos/
-/cypress/screenshots/
-
 /src/components.d.ts
 
 # Editor directories and files
 .VSCodeCounter/*
 .vscode/*
 !.vscode/extensions.json
+pnpm-lock.yaml
 .idea
 *.suo
 *.ntvs*

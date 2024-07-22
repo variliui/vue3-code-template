@@ -1,52 +1,56 @@
-# 代码模板
+前端开发规范
 
-This template should help get you started developing with Vue 3 in Vite.
+代码风格
+1.采用四个空格缩进。
+2.文件夹及文件命名采用大写驼峰，其他均为小写驼峰。
+3.变量，函数，class命名统一采用小驼峰形式，不出现数字，字母等无意义单词，尽量用双单词，常量使用全部字母大写，单词间下划线分隔的命名方式。
+4.页面布局时应出现表现页面布局的class命名。
+5.用作代码块起始的左花括号 { 前必须有一个空格。
+6.不同行为或逻辑的语句集，使用空行隔开，更易阅读。
+7.在语句的行长度超过 120 时，根据逻辑条件合理缩进。
+8.当参数过多时，将每个参数独立写在一行上，并将结束的右括号 ) 独立一行，链式调用过长也建议独立一行。推荐所有参数必须增加一个缩进。
 
-## Recommended IDE Setup
+代码规范
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Js规范
+1.使用const赋值，禁止使用var，确保不会改变初始值，重复引用导致 bug 并且使代码变得难以理解。如果你一定要对参数重新赋值，使用 `let`，而不是 `var`。
+2.使用类型严格的 ===。
+3.当if条件数量大于等于4时用switch代替if，必须写default，哪怕没有任何逻辑处理，且若if对应的else后没有其他语句省略else。
+4.对循环内多次使用的不变值，在循环外用变量缓存。
+5.字符串开头和结束使用单引号 '。
+6.使用对象字面量 {} 创建新 Object。
+7.对象创建时，如果一个对象的所有 属性 均可以不添加引号，建议所有属性不添加引号。
+8.使用数组字面量 [] 创建新数组，除非想要创建的是指定长度的数组。
+9.遍历数组不使用 for in，数组对象可能存在数字以外的属性, 这种情况下 for in 不会得到正确结果。
+10.不因为性能的原因自己实现数组排序功能，尽量使用数组的 sort 方法。自己实现的常规排序算法，在性能上并不优于数组默认的 sort 方法。以下两种场景可以自己实现排序：需要稳定的排序算法，达到严格一致的排序结果。数据特点鲜明，适合使用桶排。
+11.对象和数组的浅拷贝使用扩展运算符（...）。
+12.用对象的解构赋值来获取和使用对象某个或多个属性值。
+13.多个返回值用对象的解构，而不是数组解构，在后期添加新的属性或者变换变量的顺序而不会破坏原有的引用。
+14.使用命名函数表达式而不是函数声明。
+15.不要用 `arguments` 命名参数。他的优先级高于每个函数作用域自带的 `arguments` 对象，这会导致函数自带的 `arguments` 值被覆盖。
+16.不要使用 `arguments`，用收集参数语法 `...` 代替。`...` 明确你想用哪个参数。而且收集参数是真数组，而不是类似数组的 `arguments`。
+17.不要对参数重新赋值。参数重新赋值会导致意外行为，尤其是对 `arguments`。这也会导致优化问题，特别是在 V8 引擎里。
+18.使用拓展运算符调用多参数的函数。这样更清晰，你不必提供上下文（即指定 this 值），而且你不能轻易地用 `apply` 来组成 `new`。
+19.当你一定要用函数表达式（在回调函数里）的时候，使用箭头函数。箭头函数中的 `this` 与定义该函数的上下文中的 `this` 一致，这通常才是你想要的。而且箭头函数是更简洁的语法。什么时候不用箭头函数：如果你的函数逻辑较复杂，你应该把它单独写入一个命名函数里头。
+20.在箭头函数参数两头，总是使用小括号包裹住参数，这样做使代码更清晰且一致。此时当你想要添加或删除参数时改动最小。
+21.使用async/await搭配try/catch来处理请求。
 
-## Type Support for `.vue` Imports in TS
+Vue规范
+1.Vue开发时Script内顺序为 import，props等，个人定义的变量和函数，生命周期。其他可参考官网风格指南。
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+注释规范
+1.单行注释必须独占一行。// 后跟一个空格，缩进与下一行被注释说明的代码一致。
+2.函数/方法注释须包含函数说明，有参数和返回值时建议使用注释标识。
+3.细节注释：对于内部实现、不容易理解的逻辑说明、摘要信息等，我们可能需要编写细节注释。遵循单行注释的格式。说明必须换行时，每行是一个单行注释的起始。
+4.有时我们会使用一些特殊标记进行说明。特殊标记必须使用单行注释的形式。下面列举了一些常用标记：
+TODO: 有功能待实现。此时需要对将要实现的功能进行简单说明。
+FIXME: 该处代码运行没问题，但可能由于时间赶或者其他原因，需要修正。此时需要对如何修正进行简单说明。
+HACK: 为修正某些问题而写的不太好或者使用了某些诡异手段的代码。此时需要对思路或诡异手段进行描述。
+XXX: 该处存在陷阱。此时需要对陷阱进行描述。
+5.推荐使用/** */对变量或者函数等进行注释，这样可以通过vscode直接看到变量或者函数的注释。
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+取消跟踪文件&&重新跟踪
+如果修改了.gitignore文件，那么需要进行如下操作：
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build-only
-```
+git rm -rf --cached .
+git add ./*

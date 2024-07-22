@@ -1,0 +1,59 @@
+:deep(.richContentStyle) {
+    line-height: 300% !important;
+    table {
+        border: none;
+        border-collapse: collapse;
+    }
+    table td,
+    table th {
+        border: 1px solid #ccc;
+        padding: 3px 5px;
+        min-width: 50px;
+        height: 20px;
+    }
+    table th {
+        border-right: 1px solid #ccc;
+        border-bottom: 2px solid #ccc;
+        text-align: center;
+        background-color: #f1f1f1;
+    }
+    blockquote {
+        display: block;
+        border-left: 8px solid #d0e5f2;
+        padding: 5px 10px;
+        margin: 10px 0;
+        line-height: 1.4;
+        font-size: 100%;
+        background-color: #f1f1f1;
+    }
+    code {
+        display: inline-block;
+        display: inline;
+        zoom: 1;
+        background-color: #f1f1f1;
+        border-radius: 3px;
+        padding: 3px 5px;
+        margin: 0 3px;
+    }
+    pre code {
+        display: block;
+    }
+    ul,
+    ol {
+        margin: 10px 0 10px 20px;
+    }
+    pre {
+        border: 1px solid #ccc;
+        background-color: #f8f8f8;
+        padding: 10px;
+        margin: 5px 0px;
+        font-size: 0.8em;
+        border-radius: 3px;
+    }
+    .ql-editor ul li {
+        list-style-type: disc; // 解决序列li前面的.不展示问题
+    }
+    .ql-editor ol li {
+        list-style-type: decimal; // 解决序列li前面的数字不展示问题
+    }
+}
